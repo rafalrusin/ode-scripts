@@ -1,0 +1,11 @@
+set -x
+print_jars() {
+    echo -n $1
+    shift
+    for i; do
+        echo -n :$i
+    done
+}
+
+v=`basename $1 .xml`
+groovy -cp `print_jars lib/*.jar`  xmlToCbp.groovy $1 $v
